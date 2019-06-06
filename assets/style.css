@@ -1,0 +1,37 @@
+body {
+    background-image: url("../images/bg.jpg");
+    background-repeat: repeat;
+    font-size: 19px;
+    line-height: 18px;
+    letter-spacing: 0;
+    color: black;
+}
+
+div {
+    border: 1px solid black;
+}
+
+h1 {
+    font-family: 'Margarine', cursive;
+    font-size: 116px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, .3);
+}
+
+#buttonsView {
+    padding: 10px;
+}
+
+
+#animalsView {
+    padding: 10px;
+}
+
+
+#animalInput {
+    padding: 10px;
+}
