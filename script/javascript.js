@@ -82,10 +82,10 @@ $(document).ready(function () {
         //creating an element to hold the gif
         var image = $("<img>");
         image.attr("src", stillURL);
-        image.attr("data-still", stillURL.url);
-        image.attr("data-animated", gifURL.url);
+        image.attr("data-still", stillURL);
+        image.attr("data-animated", gifURL);
         image.attr("data-state", "still");
-        image.addClass("searchImage");
+        image.addClass("giphyImage");
 
 
         //appending the image
@@ -95,21 +95,20 @@ $(document).ready(function () {
       }
 
 
-    });
+    })
 
 
 
-  });
-  
-  $(".gif").on("click", ".searchImage", function () {
-    var image = $(this)
-    var state = $(image).attr("data-state");
-  
-    if (state == "still") {
-      $(this).attr("src", $(this).attr("animated"));
+  })
+
+  $(document).on("click", ".giphyImage", function () {
+
+    var state = $(this).data("state");
+    if(state === "still"){
+      $(this).attr("src", $(this).data('animated'));
       $(this).attr("data-state", "animated");
     } else {
-      $(this).attr("src", $(this).attr("still"));
+      $(this).attr("src", $(this).data("still"));
       $(this).attr("data-state", "still");
     }
   });
