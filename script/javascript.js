@@ -59,6 +59,8 @@ $(document).ready(function () {
     }).then(function (response) {
       console.log(response);
 
+      $("#animalsView").empty();
+
       for (var i = 0; i < response.data.length; i++) {
 
         //creating a div to hold the gifs
@@ -82,14 +84,16 @@ $(document).ready(function () {
         //creating an element to hold the gif
         var image = $("<img>");
         image.attr("src", stillURL);
-        image.attr("data-still", stillURL);
-        image.attr("data-animated", gifURL);
-        image.attr("data-state", "still");
+        //image.attr("data-still", stillURL);
+        image.attr("data-alt", gifURL);
+        //image.attr("data-state", "still");
         image.addClass("giphyImage");
 
 
         //appending the image
         gifDiv.prepend(image);
+     
+      
         $("#animalsView").prepend(gifDiv);
 
       }
@@ -102,15 +106,26 @@ $(document).ready(function () {
   })
 
   $(document).on("click", ".giphyImage", function () {
+    console.log("click image: ", this)
 
-    var state = $(this).data("state");
-    if(state === "still"){
-      $(this).attr("src", $(this).data('animated'));
-      $(this).attr("data-state", "animated");
-    } else {
-      $(this).attr("src", $(this).data("still"));
-      $(this).attr("data-state", "still");
-    }
+    var imageSrc =  $(this).attr("src")
+    $(this).attr("src", $(this).data("alt"));
+    $(this).data("alt", imageSrc);
+
+    // elem1 = 1
+    // elem2 =2
+    // elem0 = elem1
+    // elem1 = elem2
+    // elem2 = elem0
+    // var state = $(this).data("state");
+    // console.log("state: ", state)
+    // if(state === "still"){
+    //   $(this).attr("src", $(this).data('animated'));
+    //   $(this).attr("data-state", "x");
+    // } else {
+    //  $(this).attr("src", $(this).data("still"));
+    //   $(this).attr("data-state", "still");
+    // }
   });
 
   renderGifs();
