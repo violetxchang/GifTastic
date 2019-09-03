@@ -76,10 +76,10 @@ $(document).ready(function () {
         gifDiv.append(gifRating);
 
         //retrieving the URL for the gif
-        var gifURL = response.data[i].images.downsized.url;
+        var gifURL = response.data[i].images.fixed_height.url;
 
         //retrieving URL fpr the still
-        var stillURL = response.data[i].images.downsized_still.url;
+        var stillURL = response.data[i].images.fixed_height_still.url;
 
         //creating an element to hold the gif
         var image = $("<img>");
